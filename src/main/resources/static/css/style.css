@@ -1,0 +1,31 @@
+@charset "UTF-8";
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+}
+header {
+    background-color: #282c34;
+    color: white;
+    padding: 10px;
+}
+header nav ul {
+    list-style: none;
+    display: flex;
+    gap: 15px;
+}
+header nav ul li a {
+    color: white;
+    text-decoration: none;
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+}
+table, th, td {
+    border: 1px solid #ddd;
+}
+th, td {
+    padding: 10px;
+    text-align: center;
+}

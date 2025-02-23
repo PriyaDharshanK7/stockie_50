@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Welcome to Stockie 50</title>
+    
+    <link rel="icon" th:href="@{/images/logo.png}" type="image/png" /> 
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" th:href="@{/css/style.css}" />
+    <style>
+        body {
+            margin: 0%;
+            background: #f8f9fa;
+            color: #343a40;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        /* Navbar customization */
+        .navbar {
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .nav-link {
+            color: #fff !important;
+            font-weight: 500;
+        }
+        /* Hero Section */
+        .hero {
+            position: relative;
+            background: url("@{/images/index-body.jpg}") no-repeat center center;
+            background-size: cover;
+            height: 80vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+        }
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+        }
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+        }
+        .hero-content h1 {
+            font-size: 4rem;
+            font-weight: bold;
+        }
+        .hero-content p {
+            font-size: 1.25rem;
+            margin-bottom: 30px;
+        }
+        /* Info Sections */
+        .info-section {
+            padding: 60px 0;
+        }
+        .info-section h3 {
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+        .info-section p {
+            font-size: 1rem;
+            color: #6c757d;
+        }
+        /* Footer */
+        footer {
+            background: #343a40;
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+     
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="/">Stockie 50</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarContent" 
+            aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarContent">
+        <ul class="navbar-nav ml-auto">
+            <!--
+            <li class="nav-item"><a class="nav-link" th:href="@{/login}">Login</a></li>
+            <li class="nav-item"><a class="nav-link" th:href="@{/signup}">Register</a></li>
+            -->
+            <!-- Learnings Dropdown -->
+             <!--
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="learningsDropdown" role="button" 
+                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Learnings
+                </a>
+                <div class="dropdown-menu" aria-labelledby="learningsDropdown">
+                    <a class="dropdown-item" th:href="@{/about-stock-market}">About Stock market</a>
+                    <a class="dropdown-item" th:href="@{/about-nse-nifty50}">About NSE and Nifty 50</a>
+                    <a class="dropdown-item" th:href="@{/about-technical-indicators}">About Technical indicators and adx</a>
+                </div>
+            </li>-->
+            <li class="nav-item"><a class="nav-link" th:href="@{/login}">Login</a></li>
+            <li class="nav-item"><a class="nav-link" th:href="@{/signup}">Register</a></li>
+            <li class="nav-item"><a class="nav-link" th:href="@{/about}">About</a></li>
+        </ul>
+    </div>
+</nav>
+
+    <!-- Hero -->
+    <div class="hero" th:style="'background: url(' + @{/images/index-body.jpg} + ') no-repeat center center; background-size: cover;' ">
+        <div class="hero-overlay"></div>
+        <div class="container hero-content">
+            <h1>Welcome to Stockie 50</h1>
+            <p>Your Premier Source for Stock Analysis and Insights</p>
+            <a class="btn btn-lg btn-primary" th:href="@{/login}">Login to Continue</a>
+        </div>
+    </div>
+
+    <!-- Information Section -->
+    <div class="info-section">
+        <div class="container">
+            <div class="row text-center">
+                <div class="col-md-4">
+                    <h3>Intuitive Dashboard</h3>
+                    <p>Access a streamlined interface to view real-time ADX trends and stock performance in a glance.</p>
+                </div>
+                <div class="col-md-4">
+                    <h3>Secure Login</h3>
+                    <p>Our robust authentication system ensures that all your data is protected and only you can view your dashboard.</p>
+                </div>
+                <div class="col-md-4">
+                    <h3>Accurate Analysis</h3>
+                    <p>Receive accurate, up-to-date insights with our advanced technical analysis tools curated for Nifty50 stocks.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Stockies50. All Rights Reserved.</p>
+        </div>
+    </footer>
+    
+    <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

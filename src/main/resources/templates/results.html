@@ -1,0 +1,192 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>ADX Results - Stockie 50</title>
+    <link rel="icon" th:href="@{/images/logo.png}" type="image/png" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        table {
+            margin: auto;
+            margin-top: 20px;
+            width: 90%;
+        }
+        th, td {
+            text-align: center;
+            padding: 10px;
+        }
+    </style>
+  //// filepath: /d:/ADX_APPLICATION_CO-PILOT/stockies50/stockies50/src/main/resources/templates/results.html
+  <style>
+      .glass-card {
+          border-radius: 15px;
+          box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+          backdrop-filter: blur(5px);
+          -webkit-backdrop-filter: blur(5px);
+          border: 1px solid rgba(255, 255, 255, 0.3);
+          padding: 10px;
+          margin-bottom: 20px;
+          transition: transform 0.3s ease, box-shadow 0.3s ease;
+          /* Removed aspect-ratio and added a min-height */
+          min-height: 350px;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          position: relative;
+          overflow: hidden;
+      }
+      .card-effect {
+          transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+      .card-effect:hover {
+          transform: scale(1.05);
+          box-shadow: 0 12px 48px rgba(0, 0, 0, 0.3);
+      }
+      .glass-card-bullish {
+          background: #28a745;
+      }
+      .glass-card-bearish {
+          background: #dc3545;
+      }
+      .card-title {
+          font-size: 1.5rem;
+          font-weight: bold;
+          white-space: normal;
+          color: #fff !important;
+          z-index: 3;
+          text-align: center;
+          margin-top: 10px;
+      }
+      .card-details {
+          opacity: 0;
+          transition: opacity 0.3s ease;
+      }
+      .card:hover .card-details {
+          opacity: 1;
+      }
+  </style>
+</head>
+<body class="bg-light">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="/results">Stockie 50</a>
+        <div class="collapse navbar-collapse">
+           <ul class="navbar-nav ml-auto">
+              <li class="nav-item"><a class="nav-link" href="/results">Results</a></li>
+              <li class="nav-item dropdown">
+                 <a class="nav-link dropdown-toggle" href="#" id="dropdownLearnings" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                   Learnings
+                 </a>
+                 <div class="dropdown-menu" aria-labelledby="dropdownLearnings">
+                    <a class="dropdown-item" href="/about-stock-market">About Stock market</a>
+                    <a class="dropdown-item" href="/about-nse-nifty50">About NSE and Nifty 50</a>
+                    <a class="dropdown-item" href="/about-technical-indicators">About Technical indicators and adx</a>
+                 </div>
+              </li>
+              <li class="nav-item"><a class="nav-link" href="/logout">Logout</a></li>
+           </ul>
+        </div>
+     </nav>
+    
+    <div class="container mt-5">
+        <!-- Bullish Stocks Table -->
+<h2 class="text-center">Top 5 Bullish Stocks (Recommend to BUY)</h2>
+<table class="table table-striped table-success">
+    <thead class="thead-dark">
+        <tr>
+            <th>Symbol</th>
+            <th>ADX</th>
+            <th>+DI</th>
+            <th>-DI</th>
+            <th>Timestamp</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr th:each="stock : ${bullishStocks}">
+            <td th:text="${stock.symbol}">Symbol</td>
+            <td th:text="${#numbers.formatDecimal(stock.adx, 1, 2)}">0.00</td>
+            <td th:text="${#numbers.formatDecimal(stock.plusDi, 1, 2)}">0.00</td>
+            <td th:text="${#numbers.formatDecimal(stock.minusDi, 1, 2)}">0.00</td>
+            <td th:text="${#temporals.format(stock.timestamp, 'yyyy-MM-dd HH:mm:ss')}">Timestamp</td>
+        </tr>
+    </tbody>
+</table>
+
+<!-- Bearish Stocks Table -->
+<h2 class="text-center mt-5">Top 5 Bearish Stocks (Recommend to SELL)</h2>
+<table class="table table-striped table-danger">
+    <thead class="thead-dark">
+        <tr>
+            <th>Symbol</th>
+            <th>ADX</th>
+            <th>+DI</th>
+            <th>-DI</th>
+            <th>Timestamp</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr th:each="stock : ${bearishStocks}">
+            <td th:text="${stock.symbol}">Symbol</td>
+            <td th:text="${#numbers.formatDecimal(stock.adx, 1, 2)}">0.00</td>
+            <td th:text="${#numbers.formatDecimal(stock.plusDi, 1, 2)}">0.00</td>
+            <td th:text="${#numbers.formatDecimal(stock.minusDi, 1, 2)}">0.00</td>
+            <td th:text="${#temporals.format(stock.timestamp, 'yyyy-MM-dd HH:mm:ss')}">Timestamp</td>
+        </tr>
+    </tbody>
+</table>
+    </div>
+    //// filepath: /d:/ADX_APPLICATION_CO-PILOT/stockies50/stockies50/src/main/resources/templates/results.html
+<div class="container mt-5">
+    <!-- Bullish Stocks Cards -->
+    <h2 class="text-center">Top 5 Bullish Stocks (Recommend to BUY)</h2>
+    <div class="row">
+       <div class="col" th:each="stock : ${bullishStocks}" style="flex: 0 0 20%; max-width: 20%; padding: 10px;">
+           <div class="card glass-card glass-card-bullish card-effect text-white">
+              <div class="card-body d-flex flex-column justify-content-center text-center">
+                 <!-- Always visible centered stock symbol with ".ns" removed -->
+                 <h5 class="card-title" 
+                    th:text="${stock.symbol != null and stock.symbol.contains('.ns') 
+                              ? stock.symbol.substring(0, stock.symbol.indexOf('.ns')) 
+                              : stock.symbol}">
+                     Symbol
+                 </h5>
+                 <!-- Hidden details, revealed on hover -->
+                 <div class="card-details">
+                     <p class="card-text"><strong>ADX:</strong> <span th:text="${#numbers.formatDecimal(stock.adx, 1, 2)}">0.00</span></p>
+                     <p class="card-text"><strong>+DI:</strong> <span th:text="${#numbers.formatDecimal(stock.plusDi, 1, 2)}">0.00</span></p>
+                     <p class="card-text"><strong>-DI:</strong> <span th:text="${#numbers.formatDecimal(stock.minusDi, 1, 2)}">0.00</span></p>
+                     <p class="card-text"><strong>Timestamp:</strong> <span th:text="${#temporals.format(stock.timestamp, 'yyyy-MM-dd HH:mm:ss')}">Timestamp</span></p>
+                 </div>
+              </div>
+           </div>
+       </div>
+    </div>
+    
+    <!-- Bearish Stocks Cards -->
+    <h2 class="text-center mt-5">Top 5 Bearish Stocks (Recommend to SELL)</h2>
+    <div class="row">
+       <div class="col" th:each="stock : ${bearishStocks}" style="flex: 0 0 20%; max-width: 20%; padding: 10px;">
+           <div class="card glass-card glass-card-bearish card-effect text-white">
+              <div class="card-body d-flex flex-column justify-content-center text-center">
+                 <h5 class="card-title" 
+                    th:text="${stock.symbol != null and stock.symbol.contains('.ns') 
+                              ? stock.symbol.substring(0, stock.symbol.indexOf('.ns')) 
+                              : stock.symbol}">
+                     Symbol
+                 </h5>
+                 <div class="card-details">
+                     <p class="card-text"><strong>ADX:</strong> <span th:text="${#numbers.formatDecimal(stock.adx, 1, 2)}">0.00</span></p>
+                     <p class="card-text"><strong>+DI:</strong> <span th:text="${#numbers.formatDecimal(stock.plusDi, 1, 2)}">0.00</span></p>
+                     <p class="card-text"><strong>-DI:</strong> <span th:text="${#numbers.formatDecimal(stock.minusDi, 1, 2)}">0.00</span></p>
+                     <p class="card-text"><strong>Timestamp:</strong> <span th:text="${#temporals.format(stock.timestamp, 'yyyy-MM-dd HH:mm:ss')}">Timestamp</span></p>
+                 </div>
+              </div>
+           </div>
+       </div>
+    </div>
+</div>
+    <footer>
+        <p>&copy; 2025 Stockies50. All rights reserved.</p>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
