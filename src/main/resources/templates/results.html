@@ -42,10 +42,10 @@
           box-shadow: 0 12px 48px rgba(0, 0, 0, 0.3);
       }
       .glass-card-bullish {
-          background: #28a745;
+          background: #00C853;
       }
       .glass-card-bearish {
-          background: #dc3545;
+          background: #D50000;
       }
       .card-title {
           font-size: 1.5rem;
@@ -136,7 +136,7 @@
     //// filepath: /d:/ADX_APPLICATION_CO-PILOT/stockies50/stockies50/src/main/resources/templates/results.html
 <div class="container mt-5">
     <!-- Bullish Stocks Cards -->
-    <h2 class="text-center">Top 5 Bullish Stocks (Recommend to BUY)</h2>
+    <h2 class="text-center">Top 5 Bullish Stocks (Recommended to BUY)</h2>
     <div class="row">
        <div class="col" th:each="stock : ${bullishStocks}" style="flex: 0 0 20%; max-width: 20%; padding: 10px;">
            <div class="card glass-card glass-card-bullish card-effect text-white">
@@ -161,7 +161,7 @@
     </div>
     
     <!-- Bearish Stocks Cards -->
-    <h2 class="text-center mt-5">Top 5 Bearish Stocks (Recommend to SELL)</h2>
+    <h2 class="text-center mt-5">Top 5 Bearish Stocks (Recommended to SELL)</h2>
     <div class="row">
        <div class="col" th:each="stock : ${bearishStocks}" style="flex: 0 0 20%; max-width: 20%; padding: 10px;">
            <div class="card glass-card glass-card-bearish card-effect text-white">
@@ -185,8 +185,65 @@
 </div>
     <footer>
         <p>&copy; 2025 Stockies50. All rights reserved.</p>
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    </footer>
+    <!-- Terms & Conditions Modal -->
+<div class="modal fade" id="termsModal" tabindex="-1" role="dialog" aria-labelledby="termsModalLabel" 
+aria-hidden="true" data-backdrop="static" data-keyboard="false">
+<div class="modal-dialog modal-lg" role="document">
+<div class="modal-content">
+ <div class="modal-header">
+   <h5 class="modal-title" id="termsModalLabel">Terms &amp; Conditions</h5>
+ </div>
+ <div class="modal-body">
+   <p><strong>Disclaimer/Warning:</strong></p>
+   <p>Please note that investing in the stock market carries risks and the provided analysis does not constitute financial advice. You should consult a licensed counsellor or financial advisor before making any investment. The information provided here is in accordance with SEBI guidelines and is solely for informational purposes.</p>
+   <div class="form-check">
+     <input type="checkbox" class="form-check-input" id="termsCheck">
+     <label class="form-check-label" for="termsCheck">
+       I have read and agree to the Terms &amp; Conditions
+     </label>
+   </div>
+ </div>
+ <div class="modal-footer">
+   <button id="acceptTerms" type="button" class="btn btn-primary" disabled>Accept</button>
+ </div>
+</div>
+</div>
+</div>
+    <!-- Scripts for Modal functionality -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script>
+  /*$(document).ready(function(){
+    // Show the T&C modal on page load
+    $('#termsModal').modal('show');
+
+    // Enable Accept button when the checkbox is ticked
+    $('#termsCheck').on('change', function(){
+      $('#acceptTerms').prop('disabled', !this.checked);
+    });
+
+    // When the Accept button is clicked, hide the modal
+    $('#acceptTerms').click(function(){
+      $('#termsModal').modal('hide');
+      // Optionally, persist acceptance via localStorage or session if needed.
+    });
+  });*/
+  $(document).ready(function(){
+    if (!localStorage.getItem('termsAccepted')) {
+        $('#termsModal').modal('show');
+    }
+
+    $('#termsCheck').on('change', function(){
+        $('#acceptTerms').prop('disabled', !this.checked);
+    });
+
+    $('#acceptTerms').click(function(){
+        $('#termsModal').modal('hide');
+        localStorage.setItem('termsAccepted', 'true'); // Save user acceptance
+    });
+});
+</script>
 </body>
 </html>

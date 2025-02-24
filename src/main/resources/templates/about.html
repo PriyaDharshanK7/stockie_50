@@ -5,6 +5,32 @@
     <link rel="icon" th:href="@{/images/logo.png}" type="image/png"/>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" th:href="@{/css/style.css}" />
+    <style th:inline="text">
+        /* Hero section style */
+        .hero {
+          background: url("[[@{/images/logo.jpg}]]") no-repeat center center;
+          background-size: cover;
+          color: #000000;
+          padding: 100px 0;
+          text-align: center;
+        }
+        .hero h1 {
+          font-size: 3rem;
+          font-weight: bold;
+        }
+        .hero p {
+          font-size: 1.2rem;
+          max-width: 800px;
+          margin: 0 auto;
+        }
+        /* Feature cards style */
+        .feature-card {
+          transition: transform 0.3s ease;
+        }
+        .feature-card:hover {
+          transform: translateY(-5px);
+        }
+      </style>
 </head>
 <body style="margin: 0%;">
   <!-- Navbar -->
@@ -23,10 +49,101 @@
     </div>
   </nav>
   
-  <div class="container mt-5">
-      <h1>About Technical Indicators and ADX</h1>
-      <p>This page explains various technical indicators with a special focus on the Average Directional Index (ADX), its importance, and how it can be used in stock analysis.</p>
-      <!-- Expand content as needed -->
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container">
+      <h1>Welcome to Stockie 50</h1>
+      <p>
+        Stockie 50 provides advanced stock market analysis with a special focus on technical indicators
+        like ADX, +DI, and -DI for the Nifty50 stocks. Our platform helps investors gain insights, make
+        informed decisions, and manage risks in line with SEBI guidelines.
+      </p>
+    </div>
+  </section>
+  
+  <!-- Features/Explanation Section -->
+  <div class="container my-5">
+    <div class="row align-items-stretch">
+      <!-- Feature 1 -->
+      <div class="col-md-4 mb-4">
+        <div class="card h-100 feature-card shadow-sm">
+          <img src="/images/advancedta.jpg" class="card-img-top" alt="Analysis"
+               style="object-fit: cover; height: 200px;">
+          <div class="card-body">
+            <h5 class="card-title">Advanced Technical Analysis</h5>
+            <p class="card-text">
+              Leverage detailed technical indicators including ADX, +DI, and -DI to understand market trends
+              and stock performance.
+            </p>
+          </div>
+        </div>
+      </div>
+      <!-- Feature 2 -->
+      <div class="col-md-4 mb-4">
+        <div class="card h-100 feature-card shadow-sm">
+          <img src="/images/dashboard.jpg" class="card-img-top" alt="Dashboard"
+               style="object-fit: cover; height: 200px;">
+          <div class="card-body">
+            <h5 class="card-title">User-Friendly Dashboard</h5>
+            <p class="card-text">
+              Our intuitive dashboard presents real-time data, charts, and insights, making it easy for you to
+              navigate and analyze stock data.
+            </p>
+          </div>
+        </div>
+      </div>
+      <!-- Feature 3 -->
+      <div class="col-md-4 mb-4">
+        <div class="card h-100 feature-card shadow-sm">
+          <img src="/images/compliance.jpg" class="card-img-top" alt="Compliance"
+               style="object-fit: cover; height: 200px;">
+          <div class="card-body">
+            <h5 class="card-title">Risk Management & SEBI Compliance</h5>
+            <p class="card-text">
+              Stay informed with our SEBI guidelines and risk management tips. We ensure that every analysis is
+              aligned with industry's best practices.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Detailed Explanation Section -->
+  <div class="container my-5">
+    <h2 class="mb-4 text-center">How It Works</h2>
+    <div class="row">
+      <div class="col-md-6">
+        <h4>Data Aggregation</h4>
+        <p>
+          Real-time data is collected from reliable sources and processed to extract key indicators for the
+          stocks listed on Nifty50.
+        </p>
+      </div>
+      <div class="col-md-6">
+        <h4>Technical Analysis</h4>
+        <p>
+          Our system computes various technical indicators, such as the Average Directional Index (ADX) along
+          with +DI and -DI, to help you understand the market momentum and potential breakout points.
+        </p>
+      </div>
+    </div>
+    <div class="row mt-4">
+      <div class="col-md-6">
+        <h4>Visualization</h4>
+        <p>
+          Graphs and charts make it easy to interpret the analysis. Our visual tools are designed to give you an
+          overview and in-depth insight into the market trends.
+        </p>
+      </div>
+      <div class="col-md-6">
+        <h4>User Empowerment</h4>
+        <p>
+          With a simple and clear interface, investors can quickly reach informed decisions, balancing risk and
+          reward in the volatile market.
+        </p>
+      </div>
+    </div>
   </div>
   
   <footer class="bg-dark text-white text-center py-3 mt-5">
