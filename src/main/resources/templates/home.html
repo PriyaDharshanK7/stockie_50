@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8">
+    <title>Home - Stockie 50</title>
+    <link rel="icon" th:href="@{/images/logo.png}" type="image/png"/>
+    <!-- Bootstrap and custom styling -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" th:href="@{/css/style.css}" />
+    <style>
+      /* Parallax Hero Section */
+      .hero {
+        background: url("@{/images/home-bg.jpg}") no-repeat center center;
+        background-attachment: fixed;
+        background-size: cover;
+        color: #fff;
+        padding: 130px 0;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+      }
+      .hero::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0,0,0,0.5);
+      }
+      .hero .container {
+        position: relative;
+        z-index: 1;
+        animation: fadeInDown 1.2s ease-out;
+      }
+      .hero h1 {
+        font-size: 4rem;
+        font-weight: bold;
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.6);
+      }
+      .hero p {
+        font-size: 1.5rem;
+        max-width: 800px;
+        margin: 20px auto 0;
+        text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+      }
+      @keyframes fadeInDown {
+        from { opacity: 0; transform: translateY(-50px); }
+        to   { opacity: 1; transform: translateY(0); }
+      }
+      /* Interactive Feature Cards */
+      .feature-card {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+      .feature-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 12px 20px rgba(0,0,0,0.2);
+      }
+      .feature-card .card-img-top {
+        object-fit: cover;
+        height: 230px;
+      }
+      /* Smooth scroll button */
+      .scroll-btn {
+        animation: pulse 2s infinite;
+      }
+      @keyframes pulse {
+        0% { transform: scale(1); }
+        50% { transform: scale(1.05); }
+        100% { transform: scale(1); }
+      }
+      /* Footer */
+      footer {
+        background: #222;
+      }
+    </style>
+  </head>
+  <body style="margin: 0%;">
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <a class="navbar-brand" th:href="@{/home}">Stockie 50</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" 
+              data-target="#navbarContent" aria-controls="navbarContent" 
+              aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarContent">
+         <ul class="navbar-nav ml-auto">
+            <li class="nav-item active">
+              <a class="nav-link" th:href="@{/home}">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" th:href="@{/results}">Results</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" th:href="@{/logout}">Logout</a>
+            </li>
+         </ul>
+      </div>
+    </nav>
+    
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="container">
+        <h1>Welcome to Stockie 50</h1>
+        <p>
+          Unlock powerful insights and trends in the Indian stock market. Explore our interactive dashboard and analysis tools to empower your investments.
+        </p>
+        <a href="#features" class="btn btn-primary btn-lg mt-4 scroll-btn">Explore Features</a>
+      </div>
+    </section>
+    
+    <!-- Features Section -->
+    <section id="features" class="container my-5">
+      <div class="row text-center">
+        <div class="col-12 mb-4">
+          <h2>Our Platform Features</h2>
+          <p>Experience in-depth analytics, real-time updates, and interactive charts that help you make informed decisions.</p>
+        </div>
+        <!-- Feature Card 1 -->
+        <div class="col-md-4 mb-4">
+          <div class="card feature-card h-100 shadow-sm">
+            <img src="/images/advancedta.jpg" class="card-img-top" alt="Analytics">
+            <div class="card-body">
+              <h5 class="card-title">Advanced Analytics</h5>
+              <p class="card-text">
+                Detailed technical analysis including ADX, +DI, and -DI, tailored for the Indian stock market.
+              </p>
+            </div>
+          </div>
+        </div>
+        <!-- Feature Card 2 -->
+        <div class="col-md-4 mb-4">
+          <div class="card feature-card h-100 shadow-sm">
+            <img src="/images/dashboard.jpg" class="card-img-top" alt="Dashboard">
+            <div class="card-body">
+              <h5 class="card-title">Interactive Dashboard</h5>
+              <p class="card-text">
+                Real-time charts and data visualizations to monitor market trends effortlessly.
+              </p>
+            </div>
+          </div>
+        </div>
+        <!-- Feature Card 3 -->
+        <div class="col-md-4 mb-4">
+          <div class="card feature-card h-100 shadow-sm">
+            <img src="/images/insights.jpg" class="card-img-top" alt="Insights">
+            <div class="card-body">
+              <h5 class="card-title">Expert Insights</h5>
+              <p class="card-text">
+                Stay ahead with expert analyses, market forecasts, and detailed reports on emerging trends.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Call-to-Action Section -->
+    <section class="container my-5 text-center">
+      <h2>Ready to dive in?</h2>
+      <p>Explore our detailed market insights by visiting the Results page.</p>
+      <a href="/results" class="btn btn-outline-primary btn-lg">View Results</a>
+    </section>
+    
+    <!-- Footer -->
+    <footer class="bg-dark text-white text-center py-3 mt-5">
+      <div class="container">
+        <p>&copy; 2025 Stockies50. All Rights Reserved.</p>
+      </div>
+    </footer>
+    
+    <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!-- Smooth scroll (optional) -->
+    <script>
+      // Smooth scroll on click
+      $('a.scroll-btn').on('click', function(e) {
+          e.preventDefault();
+          $('html, body').animate({
+              scrollTop: $($(this).attr('href')).offset().top - 60
+          }, 800);
+      });
+    </script>
+  </body>
+</html>

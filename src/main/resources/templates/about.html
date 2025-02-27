@@ -35,19 +35,24 @@
 <body style="margin: 0%;">
   <!-- Navbar -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand" href="/">Stockie 50</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" 
-            data-target="#navbarContent" aria-controls="navbarContent" 
-            aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarContent">
+    <a class="navbar-brand" href="/home">Stockie 50</a>
+    <div class="collapse navbar-collapse">
        <ul class="navbar-nav ml-auto">
-          <li class="nav-item"><a class="nav-link" th:href="@{/login}">Login</a></li>
-          <li class="nav-item"><a class="nav-link" th:href="@{/signup}">Register</a></li>
+          <!-- <li class="nav-item"><a class="nav-link" href="/results">Results</a></li> -->
+          <li class="nav-item dropdown">
+             <a class="nav-link dropdown-toggle" href="#" id="dropdownLearnings" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+               Learnings
+             </a>
+             <div class="dropdown-menu" aria-labelledby="dropdownLearnings">
+                <a class="dropdown-item" href="/about-stock-market">About Stock market</a>
+                <a class="dropdown-item" href="/about-nse-nifty50">About NSE and Nifty 50</a>
+                <a class="dropdown-item" href="/about-technical-indicators">About Technical indicators and adx</a>
+             </div>
+          </li>
+          <li class="nav-item"><a class="nav-link" href="/logout">Logout</a></li>
        </ul>
     </div>
-  </nav>
+ </nav>
   
   <!-- Hero Section -->
   <section class="hero">

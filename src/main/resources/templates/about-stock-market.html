@@ -6,6 +6,80 @@
     <link rel="icon" th:href="@{/images/logo.png}" type="image/png"/>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" th:href="@{/css/style.css}" />
+    <style>
+      /* Hero Section */
+      .hero {
+        background: url("@{/images/market-landscape.jpg}") no-repeat center center;
+        background-size: cover;
+        color: #fff;
+        padding: 100px 0;
+        text-align: center;
+        position: relative;
+      }
+      .hero::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0,0,0,0.4);
+      }
+      .hero .container {
+        position: relative;
+        z-index: 1;
+      }
+      .hero h1 {
+        font-size: 3rem;
+        font-weight: bold;
+        text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+      }
+      .hero p {
+        font-size: 1.2rem;
+        max-width: 800px;
+        margin: 20px auto 0;
+        text-shadow: 1px 1px 2px rgba(0,0,0,0.4);
+      }
+      /* Section Headings */
+      .section-title {
+        font-size: 2rem;
+        font-weight: bold;
+        margin-bottom: 20px;
+      }
+      /* Card Hover Effect */
+      .feature-card {
+        transition: transform 0.3s ease;
+      }
+      .feature-card:hover {
+        transform: translateY(-5px);
+      }
+      .feature-card .card-img-top {
+        object-fit: cover;
+        height: 200px;
+      }
+      /* Additional styling */
+      .section-content p {
+        line-height: 1.6;
+      }
+      .timeline {
+        border-left: 4px solid #ddd;
+        padding-left: 30px;
+      }
+      .timeline-item {
+        position: relative;
+        margin-bottom: 30px;
+      }
+      .timeline-item::before {
+        content: "";
+        position: absolute;
+        left: -16px;
+        top: 0;
+        width: 12px;
+        height: 12px;
+        background: #007bff;
+        border-radius: 50%;
+      }
+    </style>
 </head>
 <body style="margin: 0%;">
   <!-- Navbar for authenticated users -->
@@ -14,25 +88,126 @@
     <button class="navbar-toggler" type="button" data-toggle="collapse" 
             data-target="#navbarContent" aria-controls="navbarContent" 
             aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
+      <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarContent">
        <ul class="navbar-nav ml-auto">
-          <li class="nav-item"><a class="nav-link" th:href="@{/logout}">Logout</a></li>
+         <li class="nav-item"><a class="nav-link" th:href="@{/logout}">Logout</a></li>
        </ul>
     </div>
   </nav>
   
-  <div class="container mt-5">
-      <h1>About Stock Market</h1>
-      <p>This page provides an overview of the stock market, its functions, key indicators, and how to interpret them.</p>
-      <!-- Add more content as needed -->
-  </div>
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container">
+      <h1>About the Stock Market</h1>
+      <p>
+        Gain deeper insight into the foundations, history, and growth of the Indian stock market to empower your investing journey.
+      </p>
+    </div>
+  </section>
   
-  <footer class="bg-dark text-white text-center py-3 mt-5">
-      <div class="container">
-          <p>&copy; 2025 Stockies50. All Rights Reserved.</p>
+  <!-- Basics Section -->
+  <section class="container my-5">
+    <div class="row">
+      <div class="col-12 text-center">
+        <h2 class="section-title">Stock Market Basics</h2>
+        <div class="section-content">
+          <p>
+            The stock market is a centralized place where shares of publicly listed companies are traded. In India, it plays a pivotal role in the economy, facilitating capital formation and giving individuals an opportunity to invest and grow their wealth.
+          </p>
+        </div>
       </div>
+    </div>
+  </section>
+
+  <!-- History Section with Timeline -->
+  <section class="container my-5">
+    <div class="row">
+      <div class="col-md-6">
+        <img src="/images/indian-history.jpg" alt="History of Indian Stock Market" class="img-fluid rounded">
+      </div>
+      <div class="col-md-6">
+        <h2 class="section-title">A Brief History</h2>
+        <div class="section-content timeline">
+          <div class="timeline-item">
+            <h5>1875</h5>
+            <p>
+              The Bombay Stock Exchange (BSE) laid the foundation for formal stock trading in India.  
+            </p>
+          </div>
+          <div class="timeline-item">
+            <h5>1992</h5>
+            <p>
+              The National Stock Exchange (NSE) was established, launching an electronic trading system that reduced transaction times and improved market efficiency.
+            </p>
+          </div>
+          <div class="timeline-item">
+            <h5>Present Day</h5>
+            <p>
+              Rapid modernization, digital transformation, and regulatory frameworks continue to shape the Indian market, making it one of the fastest-growing globally.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Key Components & Trends Section -->
+  <section class="container my-5">
+    <div class="row text-center">
+      <div class="col-md-4 mb-4">
+        <div class="card feature-card h-100 shadow-sm">
+          <img src="/images/market-check.jpg" class="card-img-top" alt="Indicators">
+          <div class="card-body">
+            <h5 class="card-title">Key Indicators</h5>
+            <p class="card-text">
+              Learn about vital metrics like ADX, +DI, and -DI to measure market movements and trend strengths.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 mb-4">
+        <div class="card feature-card h-100 shadow-sm">
+          <img src="/images/investment.jpg" class="card-img-top" alt="Investment Opportunities">
+          <div class="card-body">
+            <h5 class="card-title">Investment Opportunities</h5>
+            <p class="card-text">
+              Discover how different sectors (IT, Pharma, Banking, etc.) drive market performance, offering diverse avenues for investment.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 mb-4">
+        <div class="card feature-card h-100 shadow-sm">
+          <img src="/images/future.jpg" class="card-img-top" alt="Future Outlook">
+          <div class="card-body">
+            <h5 class="card-title">Future Outlook</h5>
+            <p class="card-text">
+              Stay on top of emerging trends, digital trading platforms, and potential reforms that continue to shape the Indian market’s evolution.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Closing Section / Disclaimer -->
+  <section class="container my-5">
+    <div class="row">
+      <div class="col">
+        <h2 class="section-title text-center">Start Your Journey</h2>
+        <p class="text-center">
+          While stock market investments carry inherent risks, education, research, and the right tools can guide you toward informed decisions.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <footer class="bg-dark text-white text-center py-3 mt-5">
+    <div class="container">
+      <p>&copy; 2025 Stockies50. All Rights Reserved.</p>
+    </div>
   </footer>
 
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>

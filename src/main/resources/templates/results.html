@@ -15,7 +15,6 @@
             padding: 10px;
         }
     </style>
-  //// filepath: /d:/ADX_APPLICATION_CO-PILOT/stockies50/stockies50/src/main/resources/templates/results.html
   <style>
       .glass-card {
           border-radius: 15px;
@@ -67,10 +66,10 @@
 </head>
 <body class="bg-light">
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="/results">Stockie 50</a>
+        <a class="navbar-brand" href="/home">Stockie 50</a>
         <div class="collapse navbar-collapse">
            <ul class="navbar-nav ml-auto">
-              <li class="nav-item"><a class="nav-link" href="/results">Results</a></li>
+              <!-- <li class="nav-item"><a class="nav-link" href="/results">Results</a></li> -->
               <li class="nav-item dropdown">
                  <a class="nav-link dropdown-toggle" href="#" id="dropdownLearnings" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                    Learnings
@@ -215,7 +214,7 @@ aria-hidden="true" data-backdrop="static" data-keyboard="false">
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <script>
-  /*$(document).ready(function(){
+  $(document).ready(function(){
     // Show the T&C modal on page load
     $('#termsModal').modal('show');
 
@@ -229,21 +228,57 @@ aria-hidden="true" data-backdrop="static" data-keyboard="false">
       $('#termsModal').modal('hide');
       // Optionally, persist acceptance via localStorage or session if needed.
     });
-  });*/
-  $(document).ready(function(){
-    if (!localStorage.getItem('termsAccepted')) {
+  });
+  /*$(document).ready(function() {
+    console.log('Page Loaded');
+    console.log('LocalStorage isLoggedIn:', localStorage.getItem('isLoggedIn'));
+    console.log('SessionStorage termsAccepted:', sessionStorage.getItem('termsAccepted'));
+
+    // Show modal only if user is logged in and hasn't accepted terms in this session
+    if (localStorage.getItem('isLoggedIn') === 'true' && !sessionStorage.getItem('termsAccepted')) {
+        console.log('Showing modal...');
         $('#termsModal').modal('show');
     }
 
-    $('#termsCheck').on('change', function(){
+    // Enable Accept button when checkbox is ticked
+    $('#termsCheck').on('change', function() {
         $('#acceptTerms').prop('disabled', !this.checked);
     });
 
-    $('#acceptTerms').click(function(){
+    // When Accept is clicked, store in sessionStorage & hide modal
+    $('#acceptTerms').click(function() {
+        sessionStorage.setItem('termsAccepted', 'true'); // Store only for this session
+        console.log('Terms accepted for this session.');
         $('#termsModal').modal('hide');
-        localStorage.setItem('termsAccepted', 'true'); // Save user acceptance
     });
-});
+
+    // Function to handle login event
+    function onLogin() {
+        console.log('User logged in!');
+        localStorage.setItem('isLoggedIn', 'true');
+        sessionStorage.removeItem('termsAccepted'); // Reset terms modal for a new login
+    }
+
+    // Function to handle logout event
+    function onLogout() {
+        console.log('User logged out!');
+        localStorage.removeItem('isLoggedIn');  // Remove login status
+        sessionStorage.removeItem('termsAccepted'); // Reset terms modal for next login
+    }
+
+    // Simulate login detection (replace with your actual login check)
+    if (window.location.pathname === "/dashboard") { // Adjust this to your actual post-login page
+        if (!localStorage.getItem('isLoggedIn')) {
+            onLogin();
+        }
+    }
+
+    // Logout button click event (ensure your logout link has href="/logout")
+    $('a[href="/logout"]').click(function() {
+        onLogout();
+    });
+  });*/
+
 </script>
 </body>
 </html>
