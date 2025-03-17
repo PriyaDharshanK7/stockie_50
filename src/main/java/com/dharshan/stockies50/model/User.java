@@ -12,23 +12,12 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    
-    // This is the display name
     private String username;
-    
-    // Used for login; must be unique
     private String email;
-    
     private String phone;
-    
-    // The encoded password stored in the DB
     private String password;
-    
-    // Not persisted; used for confirming the password during registration
     @Transient
     private String confirmPassword;
-    
-    // Getters and setters
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
     

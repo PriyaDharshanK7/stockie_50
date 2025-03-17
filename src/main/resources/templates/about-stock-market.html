@@ -2,19 +2,26 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>About Stock Market - Stockies50</title>
+    <title>About Stock Market - Stockie 50</title>
     <link rel="icon" th:href="@{/images/logo.png}" type="image/png"/>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link rel="stylesheet" th:href="@{/css/style.css}" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap" rel="stylesheet">
     <style>
-      /* Hero Section */
+      body {
+        font-family: 'Roboto', sans-serif;
+        background: #f8f9fa;
+        color: #333;
+      }
       .hero {
-        background: url("@{/images/market-landscape.jpg}") no-repeat center center;
+        background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.7)), url('/images/market-landscape.jpg') no-repeat center center;
         background-size: cover;
         color: #fff;
         padding: 100px 0;
         text-align: center;
         position: relative;
+        height: 60vh;
       }
       .hero::after {
         content: "";
@@ -40,13 +47,23 @@
         margin: 20px auto 0;
         text-shadow: 1px 1px 2px rgba(0,0,0,0.4);
       }
-      /* Section Headings */
       .section-title {
         font-size: 2rem;
         font-weight: bold;
         margin-bottom: 20px;
+        position: relative;
+        padding-bottom: 10px;
       }
-      /* Card Hover Effect */
+      .section-title:after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 60px;
+        height: 3px;
+        background: #007bff;
+      }
       .feature-card {
         transition: transform 0.3s ease;
       }
@@ -57,45 +74,88 @@
         object-fit: cover;
         height: 200px;
       }
-      /* Additional styling */
       .section-content p {
         line-height: 1.6;
       }
       .timeline {
-        border-left: 4px solid #ddd;
-        padding-left: 30px;
+        position: relative;
+        padding: 20px 0;
+        margin-top: 20px;
+      }
+      .timeline::before {
+        content: '';
+        position: absolute;
+        left: 50%;
+        top: 0;
+        bottom: 0;
+        width: 4px;
+        background: #ddd;
+        transform: translateX(-50%);
       }
       .timeline-item {
         position: relative;
-        margin-bottom: 30px;
+        width: 50%;
+        padding: 20px;
+        box-sizing: border-box;
+      }
+      .timeline-item.left {
+        left: 0;
+        text-align: right;
+      }
+      .timeline-item.right {
+        left: 50%;
       }
       .timeline-item::before {
-        content: "";
+        content: '';
         position: absolute;
-        left: -16px;
-        top: 0;
-        width: 12px;
-        height: 12px;
-        background: #007bff;
+        top: 20px;
+        width: 20px;
+        height: 20px;
         border-radius: 50%;
+        background: #007bff;
+        border: 3px solid #fff;
+        z-index: 100;
+      }
+      .timeline-item.left::before {
+        right: -10px;
+      }
+      .timeline-item.right::before {
+        left: -10px;
+      }
+      .timeline-content {
+        padding: 20px;
+        background: #fff;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      }
+      .timeline-content h5 {
+        margin-top: 0;
+        color: #007bff;
       }
     </style>
 </head>
 <body style="margin: 0%;">
   <!-- Navbar for authenticated users -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand" th:href="@{/results}">Stockies50</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" 
-            data-target="#navbarContent" aria-controls="navbarContent" 
-            aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarContent">
+    <a class="navbar-brand" href="/home">Stockie 50</a>
+    <div class="collapse navbar-collapse">
        <ul class="navbar-nav ml-auto">
-         <li class="nav-item"><a class="nav-link" th:href="@{/logout}">Logout</a></li>
+          <li class="nav-item"><a class="nav-link" href="/results">Dashboard</a></li>
+          <li class="nav-item dropdown">
+             <a class="nav-link dropdown-toggle" href="#" id="dropdownLearnings" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+               Learnings
+             </a>
+             <div class="dropdown-menu" aria-labelledby="dropdownLearnings">
+                <a class="dropdown-item" href="/about-stock-market">About Stock market</a>
+                <a class="dropdown-item" href="/about-nse-nifty50">About NSE and Nifty 50</a>
+                <a class="dropdown-item" href="/about-technical-indicators">About Technical indicators and adx</a>
+             </div>
+          </li>
+          <li class="nav-item"><a class="nav-link" href="/about">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="/logout">Logout</a></li>
        </ul>
     </div>
-  </nav>
+ </nav>
   
   <!-- Hero Section -->
   <section class="hero">
@@ -124,29 +184,44 @@
   <!-- History Section with Timeline -->
   <section class="container my-5">
     <div class="row">
-      <div class="col-md-6">
-        <img src="/images/indian-history.jpg" alt="History of Indian Stock Market" class="img-fluid rounded">
-      </div>
-      <div class="col-md-6">
-        <h2 class="section-title">A Brief History</h2>
+      <div class="col-md-12">
+        <h2 class="section-title text-center">A Brief History</h2>
         <div class="section-content timeline">
-          <div class="timeline-item">
-            <h5>1875</h5>
-            <p>
-              The Bombay Stock Exchange (BSE) laid the foundation for formal stock trading in India.  
-            </p>
+          <div class="timeline-item left">
+            <div class="timeline-content">
+              <h5>1875</h5>
+              <p>The Bombay Stock Exchange (BSE) laid the foundation for formal stock trading in India.</p>
+            </div>
           </div>
-          <div class="timeline-item">
-            <h5>1992</h5>
-            <p>
-              The National Stock Exchange (NSE) was established, launching an electronic trading system that reduced transaction times and improved market efficiency.
-            </p>
+          <div class="timeline-item right">
+            <div class="timeline-content">
+              <h5>1986</h5>
+              <p>The BSE Sensex, a benchmark index, was introduced to track the performance of 30 well-established companies.</p>
+            </div>
           </div>
-          <div class="timeline-item">
-            <h5>Present Day</h5>
-            <p>
-              Rapid modernization, digital transformation, and regulatory frameworks continue to shape the Indian market, making it one of the fastest-growing globally.
-            </p>
+          <div class="timeline-item left">
+            <div class="timeline-content">
+              <h5>1992</h5>
+              <p>The National Stock Exchange (NSE) was established, launching an electronic trading system that reduced transaction times and improved market efficiency.</p>
+            </div>
+          </div>
+          <div class="timeline-item right">
+            <div class="timeline-content">
+              <h5>2000</h5>
+              <p>The Securities and Exchange Board of India (SEBI) introduced new regulations to protect investors and ensure market transparency.</p>
+            </div>
+          </div>
+          <div class="timeline-item left">
+            <div class="timeline-content">
+              <h5>2008</h5>
+              <p>The global financial crisis impacted the Indian stock market, leading to significant reforms and increased regulatory oversight.</p>
+            </div>
+          </div>
+          <div class="timeline-item right">
+            <div class="timeline-content">
+              <h5>Present Day</h5>
+              <p>Rapid modernization, digital transformation, and regulatory frameworks continue to shape the Indian market, making it one of the fastest-growing globally.</p>
+            </div>
           </div>
         </div>
       </div>
@@ -200,13 +275,16 @@
         <p class="text-center">
           While stock market investments carry inherent risks, education, research, and the right tools can guide you toward informed decisions.
         </p>
+        <div class="text-center mt-4">
+          <a href="/results" class="btn btn-primary btn-lg">View Trend</a>
+        </div>
       </div>
     </div>
   </section>
 
   <footer class="bg-dark text-white text-center py-3 mt-5">
     <div class="container">
-      <p>&copy; 2025 Stockies50. All Rights Reserved.</p>
+      <p>&copy; 2025 Stockie 50. All Rights Reserved.</p>
     </div>
   </footer>
 

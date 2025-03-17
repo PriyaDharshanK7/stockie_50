@@ -5,38 +5,301 @@
     <title>About Technical Indicators and ADX - Stockie 50</title>
     <link rel="icon" th:href="@{/images/logo.png}" type="image/png"/>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link rel="stylesheet" th:href="@{/css/style.css}" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap" rel="stylesheet">
+    <style>
+      body {
+        font-family: 'Roboto', sans-serif;
+        background: #f8f9fa;
+        color: #333;
+      }
+      .hero-section {
+        background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.7)),
+                    url('/images/technical-indicators-bg.jpg') no-repeat center center;
+        background-size: cover;
+        padding: 130px 0;
+        color: #fff;
+        text-align: center;
+      }
+      .hero-section h1 {
+        font-size: 3rem;
+        font-weight: 700;
+        margin-bottom: 20px;
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+      }
+      .hero-section p {
+        font-size: 1.3rem;
+        max-width: 800px;
+        margin: 0 auto;
+        text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+      }
+      .section-title {
+        margin-bottom: 30px;
+        font-weight: 700;
+        color: #333;
+        position: relative;
+        padding-bottom: 10px;
+      }
+      .section-title:after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 60px;
+        height: 3px;
+        background: #007bff;
+      }
+      .card {
+        margin-bottom: 20px;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        border: none;
+        border-radius: 8px;
+      }
+      .card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+      }
+      .card-header {
+        border-radius: 8px 8px 0 0 !important;
+        font-weight: 600;
+      }
+      .card-body {
+        padding: 1.5rem;
+      }
+      .card-title {
+        color: #ffffff;
+        font-weight: 600;
+      }
+      .btn-link {
+        font-weight: 600;
+        text-decoration: none;
+        color: white;
+        width: 100%;
+        text-align: left;
+      }
+      .btn-link:hover {
+        color: white;
+        text-decoration: none;
+      }
+      ul li {
+        margin-bottom: 8px;
+      }
+      .faq-card {
+        margin-bottom: 10px;
+      }
+      .faq-card .card-header {
+        padding: 0;
+        background: #f8f9fa;
+        border: none;
+      }
+      .faq-card .btn-link {
+        color: #333;
+        padding: 15px;
+      }
+      .faq-card .btn-link:hover {
+        background-color: #f1f1f1;
+      }
+      .faq-card .btn-link:after {
+        content: '\f078';
+        font-family: 'Font Awesome 5 Free';
+        position: absolute;
+        right: 15px;
+      }
+      .faq-card .btn-link[aria-expanded="true"]:after {
+        content: '\f077';
+      }
+    </style>
 </head>
-<body style="margin: 0%;"> 
+<body style="margin: 0%;">
   <!-- Navbar -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand" th:href="@{/results}">Stockie 50</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" 
-            data-target="#navbarContent" aria-controls="navbarContent" 
-            aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarContent">
-       <ul class="navbar-nav ml-auto">
-        <li class="nav-item">
-            <a class="nav-link" th:href="@{/logout}">Logout</a>
-        </li>
-       </ul>
+    <a class="navbar-brand" href="/home">Stockie 50</a>
+    <div class="collapse navbar-collapse">
+      <ul class="navbar-nav ml-auto">
+         <li class="nav-item"><a class="nav-link" href="/results">Dashboard</a></li>
+         <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="dropdownLearnings" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Learnings
+            </a>
+            <div class="dropdown-menu" aria-labelledby="dropdownLearnings">
+               <a class="dropdown-item" href="/about-stock-market">About Stock market</a>
+               <a class="dropdown-item" href="/about-nse-nifty50">About NSE and Nifty 50</a>
+               <a class="dropdown-item" href="/about-technical-indicators">About Technical indicators and adx</a>
+            </div>
+         </li>
+         <li class="nav-item"><a class="nav-link" href="/about">About</a></li>
+         <li class="nav-item"><a class="nav-link" href="/logout">Logout</a></li>
+      </ul>
     </div>
   </nav>
-  
-  <div class="container mt-5">
+
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="container">
       <h1>About Technical Indicators and ADX</h1>
-      <p>This page explains various technical indicators with a special focus on the Average Directional Index (ADX), its importance, and how it can be used in stock analysis.</p>
-      <!-- Expand content as needed -->
-  </div>
-  
-  <footer class="bg-dark text-white text-center py-3 mt-5">
-      <div class="container">
-          <p>&copy; 2025 Stockies50. All Rights Reserved.</p>
+      <p>
+        This page explains various technical indicators with a special focus on the Average Directional Index (ADX),
+        its importance, and how it can be used in stock analysis.
+      </p>
+    </div>
+  </section>
+
+  <div class="container mt-5">
+    <!-- Technical Indicators Overview -->
+    <section class="mb-5">
+      <h2 class="section-title">Understanding Technical Indicators</h2>
+      <p>
+        Technical indicators are mathematical calculations based on the price, volume, or open interest of a security
+        or contract. They are used by traders to predict future price movements and to identify trading opportunities.
+      </p>
+      <div class="row">
+        <div class="col-md-4">
+          <div class="card">
+            <div class="card-header bg-primary text-white">
+              <h5 class="card-title mb-0">Moving Averages</h5>
+            </div>
+            <div class="card-body">
+              <p>
+                Moving averages smooth out price data to identify the direction of the trend.
+                Common types include Simple Moving Average (SMA) and Exponential Moving Average (EMA).
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card">
+            <div class="card-header bg-primary text-white">
+              <h5 class="card-title mb-0">Relative Strength Index (RSI)</h5>
+            </div>
+            <div class="card-body">
+              <p>
+                RSI measures the speed and change of price movements. It oscillates between 0 and 100
+                and is typically used to identify overbought or oversold conditions.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card">
+            <div class="card-header bg-primary text-white">
+              <h5 class="card-title mb-0">Bollinger Bands</h5>
+            </div>
+            <div class="card-body">
+              <p>
+                Bollinger Bands consist of a middle band (SMA) and two outer bands that are standard deviations away
+                from the middle band. They help identify volatility and potential price reversals.
+              </p>
+            </div>
+          </div>
+        </div>
       </div>
+    </section>
+
+    <!-- ADX Overview -->
+    <section class="mb-5">
+      <h2 class="section-title">Average Directional Index (ADX)</h2>
+      <p>
+        The Average Directional Index (ADX) is a technical indicator used to quantify the strength of a trend.
+        It ranges from 0 to 100, with higher values indicating a stronger trend.
+      </p>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="card">
+            <div class="card-header bg-primary text-white">
+              <h5 class="card-title mb-0">How ADX is Calculated</h5>
+            </div>
+            <div class="card-body">
+              <p>
+                ADX is derived from the Directional Movement Index (DMI), which includes the Plus Directional Indicator
+                (+DI) and Minus Directional Indicator (-DI). The ADX is the smoothed average of the absolute value of 
+                the difference between +DI and -DI.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="card">
+            <div class="card-header bg-primary text-white">
+              <h5 class="card-title mb-0">Using ADX in Trading</h5>
+            </div>
+            <div class="card-body">
+              <p>
+                Traders use ADX to determine whether a market is trending or ranging. A rising ADX indicates a
+                strengthening trend, while a falling ADX suggests a weakening trend. ADX values below 20 indicate
+                a weak trend, while values above 40 indicate a strong trend.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="mb-5">
+      <h2 class="section-title">Frequently Asked Questions</h2>
+      <div id="faqAccordion">
+        <div class="card faq-card">
+          <div class="card-header" id="faqHeadingOne">
+            <h5 class="mb-0">
+              <button class="btn btn-link" data-toggle="collapse" data-target="#faqOne"
+                      aria-expanded="true" aria-controls="faqOne">
+                What is the difference between SMA and EMA?
+              </button>
+            </h5>
+          </div>
+          <div id="faqOne" class="collapse show" aria-labelledby="faqHeadingOne" data-parent="#faqAccordion">
+            <div class="card-body">
+              The Simple Moving Average (SMA) calculates the average of a selected range of prices by the number of 
+              periods in that range. The Exponential Moving Average (EMA) gives more weight to recent prices, making 
+              it more responsive to new information.
+            </div>
+          </div>
+        </div>
+        <div class="card faq-card">
+          <div class="card-header" id="faqHeadingTwo">
+            <h5 class="mb-0">
+              <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#faqTwo"
+                      aria-expanded="false" aria-controls="faqTwo">
+                How can I use RSI in my trading strategy?
+              </button>
+            </h5>
+          </div>
+          <div id="faqTwo" class="collapse" aria-labelledby="faqHeadingTwo" data-parent="#faqAccordion">
+            <div class="card-body">
+              RSI can be used to identify overbought or oversold conditions. An RSI above 70 suggests that a security
+              is overbought and may be due for a correction, while an RSI below 30 indicates that a security is
+              oversold and may be due for a rebound.
+            </div>
+          </div>
+        </div>
+        <div class="card faq-card">
+          <div class="card-header" id="faqHeadingThree">
+            <h5 class="mb-0">
+              <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#faqThree"
+                      aria-expanded="false" aria-controls="faqThree">
+                What are the limitations of using ADX?
+              </button>
+            </h5>
+          </div>
+          <div id="faqThree" class="collapse" aria-labelledby="faqHeadingThree" data-parent="#faqAccordion">
+            <div class="card-body">
+              While ADX is useful for identifying the strength of a trend, it does not indicate the trend’s direction.
+              Additionally, ADX can lag behind price movements, making it less effective in rapidly changing markets.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <footer class="bg-dark text-white text-center py-3 mt-5">
+    <div class="container">
+      <p>&copy; 2025 Stockie 50. All Rights Reserved.</p>
+    </div>
   </footer>
-  
+
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>

@@ -15,7 +15,7 @@ public class ViewController {
     @Autowired
     private AdxDataRepository adxDataRepository;
     
-    @GetMapping("/")
+    /*@GetMapping("/")
     public String index(Model model) {
         // Fetch all ADX data
         List<AdxData> allData = adxDataRepository.findAll();
@@ -40,7 +40,7 @@ public class ViewController {
         model.addAttribute("bullish", bullish);
         model.addAttribute("bearish", bearish);
         return "index";
-    }
+    }*/
     
     /*@GetMapping("/login")
     public String login() {

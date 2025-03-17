@@ -1,44 +1,307 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
+  <head>
     <meta charset="UTF-8">
     <title>About NSE and Nifty 50 - Stockie 50</title>
     <link rel="icon" th:href="@{/images/logo.png}" type="image/png"/>
+    <!-- Bootstrap and custom styling -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link rel="stylesheet" th:href="@{/css/style.css}" />
-</head>
-<body style="margin: 0%;">
-  <!-- Navbar -->
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand" th:href="@{/results}">Stockie 50</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" 
-            data-target="#navbarContent" aria-controls="navbarContent" 
-            aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarContent">
-       <ul class="navbar-nav ml-auto">
-        <li class="nav-item">
-            <a class="nav-link" th:href="@{/logout}">Logout</a>
-        </li>
-       </ul>
-    </div>
-  </nav>
-  
-  <div class="container mt-5">
-      <h1>About NSE and Nifty 50</h1>
-      <p>This page explains the National Stock Exchange (NSE) and the Nifty 50 index, their importance, and how they impact the market.</p>
-      <!-- Add more details as desired -->
-  </div>
-  
-  <footer class="bg-dark text-white text-center py-3 mt-5">
-      <div class="container">
-          <p>&copy; 2025 Stockies50. All Rights Reserved.</p>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap" rel="stylesheet">
+    <style>
+      body {
+        font-family: 'Roboto', sans-serif;
+        background: #f8f9fa;
+        color: #333;
+      }
+      .hero-section {
+        background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.7)), url('/images/nse-banner.jpg') no-repeat center center;
+        background-size: cover;
+        padding: 130px 0; /* Increased height */
+        color: #fff;
+        text-align: center;
+        height: 52vh;
+      }
+      .hero-section h1 {
+        font-size: 3rem; /* Increased size */
+        font-weight: 700;
+        margin-bottom: 20px;
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+      }
+      .hero-section p {
+        font-size: 1.3rem;
+        max-width: 800px;
+        margin: 0 auto;
+        text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+      }
+      .section-title {
+        margin-bottom: 30px;
+        font-weight: 700;
+        color: #333;
+        position: relative;
+        padding-bottom: 10px;
+      }
+      .section-title:after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 60px;
+        height: 3px;
+        background: #007bff;
+      }
+      .card {
+        margin-bottom: 20px;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        border: none;
+        border-radius: 8px;
+      }
+      .card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+      }
+      .card-header {
+        border-radius: 8px 8px 0 0 !important;
+        font-weight: 600;
+      }
+      .card-body {
+        padding: 1.5rem;
+      }
+      .card-title {
+        color: #007bff;
+        font-weight: 600;
+      }
+      .btn-link {
+        font-weight: 600;
+        text-decoration: none;
+        color: white;
+        width: 100%;
+        text-align: left;
+      }
+      .btn-link:hover {
+        color: white;
+        text-decoration: none;
+      }
+      ul li {
+        margin-bottom: 8px;
+      }
+      .faq-card {
+        margin-bottom: 10px;
+      }
+      .faq-card .card-header {
+        padding: 0;
+        background: #f8f9fa;
+        border: none;
+      }
+      .faq-card .btn-link {
+        color: #333;
+        padding: 15px;
+      }
+      .faq-card .btn-link:hover {
+        background-color: #f1f1f1;
+      }
+      .faq-card .btn-link:after {
+        content: '\f078';
+        font-family: 'Font Awesome 5 Free';
+        position: absolute;
+        right: 15px;
+      }
+      .faq-card .btn-link[aria-expanded="true"]:after {
+        content: '\f077';
+      }
+    </style>
+  </head>
+  <body style="margin: 0%;">
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <a class="navbar-brand" href="/home">Stockie 50</a>
+      <div class="collapse navbar-collapse">
+         <ul class="navbar-nav ml-auto">
+            <li class="nav-item"><a class="nav-link" href="/results">Dashboard</a></li>
+            <li class="nav-item dropdown">
+               <a class="nav-link dropdown-toggle" href="#" id="dropdownLearnings" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                 Learnings
+               </a>
+               <div class="dropdown-menu" aria-labelledby="dropdownLearnings">
+                  <a class="dropdown-item" href="/about-stock-market">About Stock market</a>
+                  <a class="dropdown-item" href="/about-nse-nifty50">About NSE and Nifty 50</a>
+                  <a class="dropdown-item" href="/about-technical-indicators">About Technical indicators and adx</a>
+               </div>
+            </li>
+            <li class="nav-item"><a class="nav-link" href="/about">About</a></li>
+            <li class="nav-item"><a class="nav-link" href="/logout">Logout</a></li>
+         </ul>
       </div>
-  </footer>
-  
-  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-</body>
+   </nav>
+    
+    <!-- Hero Section -->
+    <div class="hero-section">
+      <div class="container">
+        <h1>About NSE and Nifty 50</h1>
+        <p>Understanding India's premier stock exchange and its benchmark index</p>
+      </div>
+    </div>
+    
+    <!-- Main Content -->
+    <div class="container my-5">
+      <!-- NSE Overview -->
+      <section class="mb-5">
+        <h2 class="section-title">National Stock Exchange (NSE)</h2>
+        <p>
+          The National Stock Exchange of India (NSE) was established in 1992 as the first electronic stock exchange in India. It brought a nationwide trading platform that provided fair, efficient, and transparent securities trading to investors across the country.
+        </p>
+        <p>
+          Key features of NSE include:
+        </p>
+        <ul>
+          <li>Fully automated screen-based trading system</li>
+          <li>Nationwide network for trading in multiple securities</li>
+          <li>Electronic clearing and settlement mechanisms</li>
+          <li>Anonymous order-matching system</li>
+          <li>Strict regulatory oversight and compliance</li>
+        </ul>
+      </section>
+      
+      <!-- Nifty 50 Overview -->
+      <section class="mb-5">
+        <h2 class="section-title">What is the Nifty 50?</h2>
+        <p>
+          The Nifty 50 is a benchmark Indian stock market index that represents the weighted average of 50 Indian company stocks in 13 sectors. It is owned and managed by NSE Indices (formerly known as India Index Services & Products Limited), an NSE subsidiary.
+        </p>
+        <p>
+          The Nifty 50 covers major sectors of the Indian economy and offers investment managers exposure to the Indian market in one portfolio. Since its inception, the Nifty 50 has become one of the most recognized indices in India, serving as a barometer for the Indian capital markets.
+        </p>
+        
+        <div class="row mt-4">
+          <div class="col-md-6">
+            <div class="card">
+              <div class="card-header bg-primary text-white">
+                <h5 class="card-title mb-0" style="color: #fff;">Selection Criteria</h5>
+              </div>
+              <div class="card-body">
+                <ul>
+                  <li>The company must be listed on NSE</li>
+                  <li>Large market capitalization</li>
+                  <li>High liquidity (impact cost)</li>
+                  <li>Floating stock should be at least 10%</li>
+                  <li>The company should have positive net worth</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="card">
+              <div class="card-header bg-primary text-white">
+                <h5 class="card-title mb-0" style="color: #fff;">Index Calculation</h5>
+              </div>
+              <div class="card-body">
+                <p>The Nifty 50 is calculated using the free-float market capitalization weighted method, which considers only the tradable portion of a company's shares rather than all outstanding shares.</p>
+                <p>The index is reviewed semi-annually, and changes are made based on various factors such as market capitalization, liquidity, and sector representation.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      
+      <!-- Significance -->
+      <section class="mb-5">
+        <h2 class="section-title">Importance of Nifty 50</h2>
+        <div class="row">
+          <div class="col-md-4">
+            <div class="card h-100">
+              <div class="card-body">
+                <h5 class="card-title">Benchmark for Fund Performance</h5>
+                <p class="card-text">
+                  Mutual funds and portfolio managers use the Nifty 50 as a benchmark to evaluate their investment performance.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card h-100">
+              <div class="card-body">
+                <h5 class="card-title">Economic Indicator</h5>
+                <p class="card-text">
+                  The Nifty 50 reflects the overall health of the Indian economy and is often used by economists and policymakers.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card h-100">
+              <div class="card-body">
+                <h5 class="card-title">Investment Products</h5>
+                <p class="card-text">
+                  Many financial products like index funds, ETFs, and derivatives are based on the Nifty 50 index.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      
+      <!-- FAQ Section -->
+      <section>
+        <h2 class="section-title">Frequently Asked Questions</h2>
+        <div id="faqAccordion">
+          <div class="card faq-card">
+            <div class="card-header" id="headingOne">
+              <h5 class="mb-0">
+                <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne">
+                  How often is the Nifty 50 rebalanced?
+                </button>
+              </h5>
+            </div>
+            <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#faqAccordion">
+              <div class="card-body">
+                The Nifty 50 index is reviewed and rebalanced semi-annually. The announcement of changes is typically made six weeks before the actual rebalancing takes effect.
+              </div>
+            </div>
+          </div>
+          <div class="card faq-card">
+            <div class="card-header" id="headingTwo">
+              <h5 class="mb-0">
+                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo">
+                  What is the difference between Nifty 50 and Sensex?
+                </button>
+              </h5>
+            </div>
+            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#faqAccordion">
+              <div class="card-body">
+                While both are benchmark indices for the Indian stock market, Nifty 50 comprises 50 stocks listed on the NSE, whereas Sensex includes 30 stocks listed on the Bombay Stock Exchange (BSE). Nifty 50 typically provides broader market coverage.
+              </div>
+            </div>
+          </div>
+          <div class="card faq-card">
+            <div class="card-header" id="headingThree">
+              <h5 class="mb-0">
+                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree">
+                  How can I invest in the Nifty 50?
+                </button>
+              </h5>
+            </div>
+            <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#faqAccordion">
+              <div class="card-body">
+                You can invest in the Nifty 50 through index funds, Exchange Traded Funds (ETFs), futures and options, or by creating your own portfolio of the constituent stocks in the same proportion as the index.
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+    
+    <!-- Footer -->
+    <footer class="bg-dark text-white text-center py-3">
+      <div class="container">
+        <p class="mb-0">&copy; 2025 Stockies50. All Rights Reserved.</p>
+      </div>
+    </footer>
+    
+    <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  </body>
 </html>
