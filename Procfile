@@ -1,1 +1,1 @@
-web: java -jar target/stockie50.jar
+web: java -jar target/stockies50-0.0.1-SNAPSHOT.jar
